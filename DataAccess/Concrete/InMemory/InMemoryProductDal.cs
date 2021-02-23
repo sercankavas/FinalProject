@@ -60,7 +60,13 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Product product)
         {
-            throw new NotImplementedException();
+            //Find the prod Id which i used as parameter
+            Product productToUpdate= _products.SingleOrDefault(p => p.ProductId == product.ProductId);
+            productToUpdate.ProductName = product.ProductName;
+            productToUpdate.CategoryId = product.CategoryId;
+            productToUpdate.UnitPrice = product.UnitPrice;
+            productToUpdate.UnitsInStock = product.UnitsInStock;
+
         }
     }
 }
