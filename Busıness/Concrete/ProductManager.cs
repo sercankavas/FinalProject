@@ -1,4 +1,5 @@
 ﻿using Busıness.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -18,9 +19,10 @@ namespace Busıness.Concrete
             _productDal = productDal;
         }
 
-        public void Add(Product product)
+        public IResult Add(Product product)
         {
             _productDal.Add(product);
+            return new Result();
         }
 
         public List<Product> GetAll()
