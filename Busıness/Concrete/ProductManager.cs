@@ -30,10 +30,14 @@ namespace Busıness.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
+            if (DateTime.Now.Hour==12)
+            {
+                return new ErrorDataResult();
+            }
             //is kodlarini buraya yazacaz
-            return _productDal.GetAll();
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(),true,"Products are listed");
 
         }
 
